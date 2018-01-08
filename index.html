@@ -1,0 +1,75 @@
+<!doctype html>
+<head>
+<script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<title>Test</title> 
+<meta charset=utf-8> 
+<script>  
+
+
+
+function apiCall()
+{
+	var xhr = new XMLHttpRequest();
+	  if ("withCredentials" in xhr) {
+
+		// Check if the XMLHttpRequest object has a "withCredentials" property.
+		// "withCredentials" only exists on XMLHTTPRequest2 objects.
+		/*
+		$(document).ready(function() {  
+			$.ajax({  
+				url: 'http://127.0.0.1:5000/',              
+				type: 'POST',   
+				dataType: 'json',  
+				success: function(data) {      
+					console.log(data);  
+					  
+				},  
+				error: function(data) {
+						console.log(data)
+					console.log('Error in Database');  
+				}  
+			});  
+		});
+		*/
+		
+	
+	
+    xhr.open('POST', 'http://127.0.0.1:5000/index', true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+
+
+//var xhr = createCORSRequest('GET', url);
+//if (!xhr) {
+ // throw new Error('CORS not supported');
+
+
+//alert("asahsgahsg");
+      
+}
+
+var obj=apiCall();
+console.log(obj);
+</script>
+
+<html>
+<body>
+<form action="{{ url_for('handle_data') }}" method="post">
+ <input type="text" name="projectFilepath">
+ <input type="submit">
+</body>
+</html>

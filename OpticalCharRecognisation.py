@@ -110,8 +110,7 @@ def threshold(imageArray):
     return newAr  
 
 
-
-
+createExamples()
 whatThisImage('Images/three.png')
   
 
